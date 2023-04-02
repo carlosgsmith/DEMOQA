@@ -91,7 +91,7 @@ public class demoQAElementsPage {
 
 
 
-    //Check Box String & Methods
+    //Check Element Definitions & Methods
 
     public SelenideElement homeCheckboxSVG = $("#tree-node > ol > li > span > label > span.rct-checkbox > svg");
     public SelenideElement desktopCheckboxSVG = $("#tree-node > ol > li > ol > li:nth-child(1) > span > label > span.rct-checkbox > svg");
@@ -165,5 +165,7 @@ public class demoQAElementsPage {
 
     //TODO: Create a clear all method for checkboxes. The method has to iterate thru the tree, determine which node is
     // checked, then uncheck it
+
+    //Radio Button Element Definition and Methods
 
 }
