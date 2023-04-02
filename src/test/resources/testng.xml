@@ -1,0 +1,20 @@
+<?xml version ="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "nttp://testng.org/testng-1.0.dtd">
+<suite name = "DEMOQA">
+    <test name = "openDEMOQAURL">
+        <classes>
+            <class name = "demoQATest">
+                <methods>
+                    <include name = "openDemoQAURL" />
+                    <include name = "verifyHomePageLinksVisible" />
+                    <include name = "testElementsPageTextBoxLink" />
+                    <include name = "testElementsPageTextBoxForm" />
+                    <include name = "testElementsPageTextBoxFormInvalidEmails" />
+                    <include name = "testElementPageCheckboxesAllSelected" />
+                    <include name = "testElementPageCheckboxesAllUnSelected" />
+                    <include name = "testElementPageCheckboxesPartiallySelected" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
