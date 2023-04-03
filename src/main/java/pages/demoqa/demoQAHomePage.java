@@ -24,17 +24,17 @@ public class demoQAHomePage {
     public void openURL(){
         ChromeOptions options = new ChromeOptions();
         Configuration.browserCapabilities = options;
-        options.addArguments("--remote-allow-origins=*");
+        options.addArguments("--remote-allow-origins=*", "--headless", "--window-size=1920,1200", "--window-position=0,0");
         Configuration.browser = "chrome";
-        //options.addArguments("--window-size=1920,1200");
-        //Configuration.browserSize = "1920x1200";
-
+        Configuration.browserSize = "1920x1200";
+        open("https://demoqa.com");
+/*
         WebDriver webdriver = new ChromeDriver(options);
         setWebDriver(webdriver);
         webdriver.manage().window().setSize(new Dimension(1920,1200));
         webdriver.findElement(By.tagName("html")).sendKeys(Keys.chord(Keys.CONTROL, "0"));
         open("https://demoqa.com");
-
+*/
     }
 
     public String getHomePageLinksText(int indexNumber){
