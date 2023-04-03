@@ -9,9 +9,6 @@ import static com.codeborne.selenide.Selenide.$$;
 
 public class demoQASidebarMenu {
 
-
-
-
     public ElementsCollection sidebarMain =  $$("#app > div.body-height > div.container.playgound-body > " +
             "div.row > div.col-12.mt-4.col-md-3 > div.left-pannel > div.accordion");
 
