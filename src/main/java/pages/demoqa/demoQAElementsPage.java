@@ -75,7 +75,7 @@ public class demoQAElementsPage {
     }
 
     public void clickSubmitButton(){
-        actions().moveToElement(submitButton).click().perform();
+        actions().moveToElement(submitButton).click().build().perform();
     }
 
     public void clearUsername(){ userNameInputField.clear(); }

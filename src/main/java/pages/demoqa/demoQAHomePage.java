@@ -18,7 +18,9 @@ public class demoQAHomePage {
     public void openURL(){
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--remote-allow-origins=*");
+        options.addArguments("--window-size=1920,1200");
         Configuration.browserCapabilities = options;
+        Configuration.browser = "chrome";
         Configuration.browserSize = "1920x1200";
         open("https://demoqa.com");
     }
