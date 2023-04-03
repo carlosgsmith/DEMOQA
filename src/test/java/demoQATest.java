@@ -145,6 +145,11 @@ public class demoQATest {
         Assert.assertFalse(demoqaelementspage.downloadsCheckbox.isSelected());
         Assert.assertFalse(demoqaelementspage.wordFileCheckbox.isSelected());
         Assert.assertTrue(demoqaelementspage.excelFileCheckbox.isSelected());
+    }
 
+    @Test(priority = 9)
+    @Description("Test Element Page - Radio Buttons")
+    public void testElementPageRadioButtons(){
+        demoqasidebarmenu.setSidebarSub("Radio Button");
     }
 }

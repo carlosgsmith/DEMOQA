@@ -1,15 +1,18 @@
 package pages.demoqa;
 
-import com.codeborne.selenide.ElementsCollection;
-import com.codeborne.selenide.SelenideElement;
+import com.codeborne.selenide.*;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.interactions.Action;
+import org.openqa.selenium.interactions.Actions;
 
 import java.security.KeyStore;
 import java.time.Duration;
 
 import static com.codeborne.selenide.Condition.exactText;
 import static com.codeborne.selenide.Condition.visible;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.$$;
+import static com.codeborne.selenide.Selenide.*;
 
 
 public class demoQAElementsPage {
@@ -72,7 +75,7 @@ public class demoQAElementsPage {
     }
 
     public void clickSubmitButton(){
-        submitButton.shouldBe(visible, Duration.ofSeconds(10)).click();
+        actions().moveToElement(submitButton).click().perform();
     }
 
     public void clearUsername(){ userNameInputField.clear(); }
@@ -91,7 +94,7 @@ public class demoQAElementsPage {
 
 
 
-    //Check Box String & Methods
+    //Check Element Definitions & Methods
 
     public SelenideElement homeCheckboxSVG = $("#tree-node > ol > li > span > label > span.rct-checkbox > svg");
     public SelenideElement desktopCheckboxSVG = $("#tree-node > ol > li > ol > li:nth-child(1) > span > label > span.rct-checkbox > svg");
@@ -165,5 +168,7 @@ public class demoQAElementsPage {
 
     //TODO: Create a clear all method for checkboxes. The method has to iterate thru the tree, determine which node is
     // checked, then uncheck it
+
+    //Radio Button Element Definition and Methods
 
 }

@@ -13,6 +13,7 @@
                     <include name = "testElementPageCheckboxesAllSelected" />
                     <include name = "testElementPageCheckboxesAllUnSelected" />
                     <include name = "testElementPageCheckboxesPartiallySelected" />
+                    <include name = "testElementsPageRadioButtons" />
                 </methods>
             </class>
         </classes>
