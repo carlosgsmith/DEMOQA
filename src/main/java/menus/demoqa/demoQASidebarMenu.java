@@ -2,10 +2,12 @@ package menus.demoqa;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.ElementsCollection;
+import com.codeborne.selenide.commands.SelectRadio;
+import org.openqa.selenium.By;
 
 import java.time.Duration;
 
-import static com.codeborne.selenide.Selenide.$$;
+import static com.codeborne.selenide.Selenide.*;
 
 public class demoQASidebarMenu {
 
@@ -15,6 +17,8 @@ public class demoQASidebarMenu {
     public ElementsCollection sidebarSub = $$("#app > div.body-height > div.container.playgound-body > " +
             "div.row > div.col-12.mt-4.col-md-3 > div.left-pannel > div.accordion > div.element-group > " +
             "div.element-list.collapse.show > ul.menu-list > li");
+
+    public SelectRadio yesRadioButton;//getSelectedRadio(By.id("yesRadio"));
 
     public void setSidebarMain(String sidebarMainMenuItem){
         sidebarMain.findBy(Condition.exactText(sidebarMainMenuItem)).shouldBe(Condition.visible, Duration.ofSeconds(10)).click();
