@@ -1,39 +1,104 @@
 package pages.demoqa;
 
 import com.codeborne.selenide.*;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.interactions.Action;
-import org.openqa.selenium.interactions.Actions;
+import com.codeborne.selenide.conditions.Text;
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 
-import java.security.KeyStore;
 import java.time.Duration;
 
-import static com.codeborne.selenide.Condition.exactText;
-import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
 
 
 public class demoQAElementsPage {
 
-    //Text-Box Form Element Definitions & Methods
     public String RETURNED_USER_NAME;
     public String RETURNED_USER_EMAIL;
     public String RETURNED_USER_CURRENT_ADDRESS;
     public String RETURNED_USER_PERMANENT_ADDRESS;
+    public String CURRENT_RECORD;
+    public int NUMBER_OF_RECORDS;
 
     public SelenideElement userNameInputField = $("#userName");
     public SelenideElement userEmailInputField = $("#userEmail");
     public SelenideElement currentAddressInputField = $("#currentAddress");
     public SelenideElement permanentAddressInputField = $("#permanentAddress");
-
     public SelenideElement submittedUserName = $("#name");
     public SelenideElement submittedUserEmail = $("#email");
     public SelenideElement submittedCurrentAddress = $("#currentAddress.mb-1");
     public SelenideElement submittedPermanentAddress = $("#permanentAddress.mb-1");
     public SelenideElement submitButton = $("#submit");
 
+    //Check-box Element Definitions
+    public SelenideElement homeCheckboxSVG = $("#tree-node > ol > li > span > label > span.rct-checkbox > svg");
+    public SelenideElement desktopCheckboxSVG = $("#tree-node > ol > li > ol > li:nth-child(1) > span > label > span.rct-checkbox > svg");
+    public SelenideElement notesCheckboxSVG = $("#tree-node > ol > li > ol > li:nth-child(1) > ol > li:nth-child(1) > span > label > span.rct-checkbox > svg");
+    public SelenideElement commandsCheckboxSVG = $("#tree-node > ol > li > ol > li:nth-child(1) > ol > li:nth-child(2) > span > label > span.rct-checkbox > svg");
+    public SelenideElement documentsCheckboxSVG = $("#tree-node > ol > li > ol > li:nth-child(2) > span > label > span.rct-checkbox > svg");
+    public SelenideElement workspaceCheckboxSVG = $("#tree-node > ol > li > ol > li:nth-child(2) > ol > li:nth-child(1) > span > label > span.rct-checkbox > svg");
+    public SelenideElement reactCheckboxSVG = $("#tree-node > ol > li > ol > li:nth-child(2) > ol > li:nth-child(1) > ol > li:nth-child(1) > span > label > span.rct-checkbox > svg");
+    public SelenideElement angularCheckboxSVG = $("#tree-node > ol > li > ol > li:nth-child(2) > ol > li:nth-child(1) > ol > li:nth-child(2) > span > label > span.rct-checkbox > svg");
+    public SelenideElement veuCheckboxSVG = $("#tree-node > ol > li > ol > li:nth-child(2) > ol > li:nth-child(1) > ol > li:nth-child(3) > span > label > span.rct-checkbox > svg");
+    public SelenideElement officeCheckboxSVG = $("#tree-node > ol > li > ol > li:nth-child(2) > ol > li:nth-child(2) > span > label > span.rct-checkbox > svg");
+    public SelenideElement publicCheckboxSVG = $("#tree-node > ol > li > ol > li:nth-child(2) > ol > li:nth-child(2) > ol > li:nth-child(1) > span > label > span.rct-checkbox > svg");
+    public SelenideElement privateCheckboxSVG = $("#tree-node > ol > li > ol > li:nth-child(2) > ol > li:nth-child(2) > ol > li:nth-child(2) > span > label > span.rct-checkbox > svg");
+    public SelenideElement classifiedCheckboxSVG = $("#tree-node > ol > li > ol > li:nth-child(2) > ol > li:nth-child(2) > ol > li:nth-child(3) > span > label > span.rct-checkbox > svg");
+    public SelenideElement generalCheckboxSVG = $("#tree-node > ol > li > ol > li:nth-child(2) > ol > li:nth-child(2) > ol > li:nth-child(4) > span > label > span.rct-checkbox > svg");
+    public SelenideElement downloadsCheckboxSVG = $("#tree-node > ol > li > ol > li:nth-child(3) > span > label > span.rct-checkbox > svg");
+    public SelenideElement wordFileCheckboxSVG = $("#tree-node > ol > li > ol > li:nth-child(3) > ol > li:nth-child(1) > span > label > span.rct-checkbox > svg");
+    public SelenideElement excelFileCheckboxSVG = $("#tree-node > ol > li > ol > li:nth-child(3) > ol > li:nth-child(2) > span > label > span.rct-checkbox > svg");
+    public SelenideElement homeCheckbox = $("#tree-node-home");
+    public SelenideElement desktopCheckbox = $("#tree-node-desktop");
+    public SelenideElement notesCheckbox = $("#tree-node-notes");
+    public SelenideElement commandsCheckbox = $("#tree-node-commands");
+    public SelenideElement documentsCheckbox = $("#tree-node-documents");
+    public SelenideElement workspaceCheckbox = $("#tree-node-workspace");
+    public SelenideElement reactCheckbox = $("#tree-node-react");
+    public SelenideElement angularCheckbox = $("#tree-node-angular");
+    public SelenideElement veuCheckbox = $("#tree-node-veu");
+    public SelenideElement officeCheckbox = $("#tree-node-office");
+    public SelenideElement publicCheckbox = $("#tree-node-public");
+    public SelenideElement privateCheckbox = $("#tree-node-private");
+    public SelenideElement classifiedCheckbox = $("#tree-node-classified");
+    public SelenideElement generalCheckbox = $("#tree-node-general");
+    public SelenideElement downloadsCheckbox = $("#tree-node-downloads");
+    public SelenideElement wordFileCheckbox = $("#tree-node-wordFile");
+    public SelenideElement excelFileCheckbox = $("#tree-node-excelFile");
+    public SelenideElement checkboxExpandAll = $("#tree-node > div > button.rct-option.rct-option-expand-all > svg");
+    public SelenideElement checkboxCollapseAll = $("#tree-node > div > button.rct-option.rct-option-collapse-all > svg");
+    public SelenideElement homeToggle = $("#tree-node > ol > li > span > button > svg");
+    public SelenideElement desktopToggle = $("#tree-node > ol > li > ol > li:nth-child(1) > span > button > svg");
+    public SelenideElement documentsToggle = $("#tree-node > ol > li > ol > li:nth-child(2) > span > button > svg");
+    public SelenideElement workspaceToggle = $("#tree-node > ol > li > ol > li:nth-child(2) > ol > li:nth-child(1) > span > button > svg");
+    public SelenideElement officeToggle = $("#tree-node > ol > li > ol > li:nth-child(2) > ol > li:nth-child(2) > span > button > svg");
+    public SelenideElement downloadsToggle = $("#tree-node > ol > li > ol > li:nth-child(3) > span > button > svg");
+
+    /*Radio Button Element Definitions*/
+    public SelenideElement yesRadioButtonLabel = $(By.cssSelector("label[class='custom-control-label'][for='yesRadio']"));
+    public SelenideElement impressiveRadioButtonLabel = $(By.cssSelector("label[class='custom-control-label'][for='impressiveRadio']"));
+    public SelenideElement noRadioButtonLabel = $(By.cssSelector("label[class='custom-control-label'][for='noRadio']"));
+    public SelenideElement yesRadioButton = $("#yesRadio");
+    public SelenideElement impressiveRadioButton = $("#impressiveRadio");
+    public SelenideElement noRadioButton = $("#noRadio");
+
+    /*Web Tables Element Definition*/
+    public SelenideElement webTableAddButton = $("#addNewRecordButton");
+    public SelenideElement webTableSearchInputField = $("#searchBox");
+    public SelenideElement webTableRowsDropdownMenu = $("#app > div > div > div.row > " +
+            "div.col-12.mt-4.col-md-6 > div.web-tables-wrapper > div.ReactTable.-striped.-highlight > " +
+            "div.pagination-bottom > div > div.-center > span.select-wrap.-pageSizeOptions > select");
+    public SelenideElement registrationFormText = $("#registration-form-modal");
+    public SelenideElement registrationFormFirstNameInputField = $("#firstName");
+    public SelenideElement registrationFormLastNameInputField = $("#lastName");
+    public SelenideElement registrationFormEmailInputField = $("#userEmail");
+    public SelenideElement registrationFormAgeInputField = $("#age");
+    public SelenideElement registrationFormSalaryInputField = $("#salary");
+    public SelenideElement registrationFormDepartmentInputField = $("#department");
+    public SelenideElement registrationFormSubmitButton = $("#submit");
+
+
+    /*TextBox Methods*/
     public void setUserName(String user_name){
         userNameInputField.shouldBe(visible, Duration.ofSeconds(10)).sendKeys(user_name);
     }
@@ -92,56 +157,6 @@ public class demoQAElementsPage {
         permanentAddressInputField.clear();
     }
 
-
-
-    //Check Element Definitions & Methods
-
-    public SelenideElement homeCheckboxSVG = $("#tree-node > ol > li > span > label > span.rct-checkbox > svg");
-    public SelenideElement desktopCheckboxSVG = $("#tree-node > ol > li > ol > li:nth-child(1) > span > label > span.rct-checkbox > svg");
-    public SelenideElement notesCheckboxSVG = $("#tree-node > ol > li > ol > li:nth-child(1) > ol > li:nth-child(1) > span > label > span.rct-checkbox > svg");
-    public SelenideElement commandsCheckboxSVG = $("#tree-node > ol > li > ol > li:nth-child(1) > ol > li:nth-child(2) > span > label > span.rct-checkbox > svg");
-    public SelenideElement documentsCheckboxSVG = $("#tree-node > ol > li > ol > li:nth-child(2) > span > label > span.rct-checkbox > svg");
-    public SelenideElement workspaceCheckboxSVG = $("#tree-node > ol > li > ol > li:nth-child(2) > ol > li:nth-child(1) > span > label > span.rct-checkbox > svg");
-    public SelenideElement reactCheckboxSVG = $("#tree-node > ol > li > ol > li:nth-child(2) > ol > li:nth-child(1) > ol > li:nth-child(1) > span > label > span.rct-checkbox > svg");
-    public SelenideElement angularCheckboxSVG = $("#tree-node > ol > li > ol > li:nth-child(2) > ol > li:nth-child(1) > ol > li:nth-child(2) > span > label > span.rct-checkbox > svg");
-    public SelenideElement veuCheckboxSVG = $("#tree-node > ol > li > ol > li:nth-child(2) > ol > li:nth-child(1) > ol > li:nth-child(3) > span > label > span.rct-checkbox > svg");
-    public SelenideElement officeCheckboxSVG = $("#tree-node > ol > li > ol > li:nth-child(2) > ol > li:nth-child(2) > span > label > span.rct-checkbox > svg");
-    public SelenideElement publicCheckboxSVG = $("#tree-node > ol > li > ol > li:nth-child(2) > ol > li:nth-child(2) > ol > li:nth-child(1) > span > label > span.rct-checkbox > svg");
-    public SelenideElement privateCheckboxSVG = $("#tree-node > ol > li > ol > li:nth-child(2) > ol > li:nth-child(2) > ol > li:nth-child(2) > span > label > span.rct-checkbox > svg");
-    public SelenideElement classifiedCheckboxSVG = $("#tree-node > ol > li > ol > li:nth-child(2) > ol > li:nth-child(2) > ol > li:nth-child(3) > span > label > span.rct-checkbox > svg");
-    public SelenideElement generalCheckboxSVG = $("#tree-node > ol > li > ol > li:nth-child(2) > ol > li:nth-child(2) > ol > li:nth-child(4) > span > label > span.rct-checkbox > svg");
-    public SelenideElement downloadsCheckboxSVG = $("#tree-node > ol > li > ol > li:nth-child(3) > span > label > span.rct-checkbox > svg");
-    public SelenideElement wordFileCheckboxSVG = $("#tree-node > ol > li > ol > li:nth-child(3) > ol > li:nth-child(1) > span > label > span.rct-checkbox > svg");
-    public SelenideElement excelFileCheckboxSVG = $("#tree-node > ol > li > ol > li:nth-child(3) > ol > li:nth-child(2) > span > label > span.rct-checkbox > svg");
-
-
-    public SelenideElement homeCheckbox = $("#tree-node-home");
-    public SelenideElement desktopCheckbox = $("#tree-node-desktop");
-    public SelenideElement notesCheckbox = $("#tree-node-notes");
-    public SelenideElement commandsCheckbox = $("#tree-node-commands");
-    public SelenideElement documentsCheckbox = $("#tree-node-documents");
-    public SelenideElement workspaceCheckbox = $("#tree-node-workspace");
-    public SelenideElement reactCheckbox = $("#tree-node-react");
-    public SelenideElement angularCheckbox = $("#tree-node-angular");
-    public SelenideElement veuCheckbox = $("#tree-node-veu");
-    public SelenideElement officeCheckbox = $("#tree-node-office");
-    public SelenideElement publicCheckbox = $("#tree-node-public");
-    public SelenideElement privateCheckbox = $("#tree-node-private");
-    public SelenideElement classifiedCheckbox = $("#tree-node-classified");
-    public SelenideElement generalCheckbox = $("#tree-node-general");
-    public SelenideElement downloadsCheckbox = $("#tree-node-downloads");
-    public SelenideElement wordFileCheckbox = $("#tree-node-wordFile");
-    public SelenideElement excelFileCheckbox = $("#tree-node-excelFile");
-    public SelenideElement checkboxExpandAll = $("#tree-node > div > button.rct-option.rct-option-expand-all > svg");
-    public SelenideElement checkboxCollapseAll = $("#tree-node > div > button.rct-option.rct-option-collapse-all > svg");
-    public SelenideElement homeToggle = $("#tree-node > ol > li > span > button > svg");
-    public SelenideElement desktopToggle = $("#tree-node > ol > li > ol > li:nth-child(1) > span > button > svg");
-    public SelenideElement documentsToggle = $("#tree-node > ol > li > ol > li:nth-child(2) > span > button > svg");
-    public SelenideElement workspaceToggle = $("#tree-node > ol > li > ol > li:nth-child(2) > ol > li:nth-child(1) > span > button > svg");
-    public SelenideElement officeToggle = $("#tree-node > ol > li > ol > li:nth-child(2) > ol > li:nth-child(2) > span > button > svg");
-    public SelenideElement downloadsToggle = $("#tree-node > ol > li > ol > li:nth-child(3) > span > button > svg");
-
-
     public void clickHomeCheckbox(){
         homeCheckboxSVG.should(visible, Duration.ofSeconds(10)).click();
     }
@@ -169,6 +184,93 @@ public class demoQAElementsPage {
     //TODO: Create a clear all method for checkboxes. The method has to iterate thru the tree, determine which node is
     // checked, then uncheck it
 
-    //Radio Button Element Definition and Methods
+    public void clickYesRadioButtonLabel(){
+        yesRadioButtonLabel.shouldBe(visible, Duration.ofSeconds(10)).click();
+    }
+    public void clickImpressiveRadioButtonLabel(){
+        impressiveRadioButtonLabel.shouldBe(visible, Duration.ofSeconds(10)).click();
+    }
 
+    public void clickNoRadioButtonLabel(){
+        noRadioButtonLabel.shouldBe(visible, Duration.ofSeconds(10)).click();
+    }
+   /*WebTable Methods*/
+    public ElementsCollection webTableRows = $$("#app > div > div > div.row > div.col-12.mt-4.col-md-6 > " +
+            "div.web-tables-wrapper > div.ReactTable.-striped.-highlight > div.rt-table > div.rt-tbody > div.rt-tr-group");
+
+    public ElementsCollection actionButtons = $$("#app > div > div > div.row > div.col-12.mt-4.col-md-6 > " +
+            "div.web-tables-wrapper > div.ReactTable.-striped.-highlight > div.rt-table > div.rt-tbody > " +
+            "div.rt-tr-group > div.rt-tr.-odd > div.rt-td > div.action-buttons > span > svg");
+
+    public void expandWebTableRows(int numberOfRowsToSet){
+        webTableRowsDropdownMenu.shouldBe(visible, Duration.ofSeconds(10)).click();
+        webTableRowsDropdownMenu.$("[value='"+numberOfRowsToSet+"']").click();
+    }
+
+    public void searchWebTableRecords(String searchRecordsFor){
+        webTableSearchInputField.shouldBe(visible, Duration.ofSeconds(10)).sendKeys(searchRecordsFor);
+    }
+
+    public void clickEditRecordsButton(){
+        actionButtons.get(0).click();
+    }
+
+    public void clickDeleteRecordsButton(){
+        actionButtons.get(1).click();
+    }
+
+    public void clickAddRecordsButton(){
+        webTableAddButton.shouldBe(visible, Duration.ofSeconds(10)).click();
+    }
+
+    public void clearSearchInputField(){
+        webTableSearchInputField.click();
+        webTableSearchInputField.sendKeys(Keys.CONTROL+"A"+Keys.DELETE);
+    }
+
+    public void setNewRecordFirstName(String newRecordFirstName){
+        registrationFormFirstNameInputField.sendKeys(newRecordFirstName);
+    }
+
+    public void setNewRecordLastName(String newRecordLastName){
+        registrationFormLastNameInputField.sendKeys(newRecordLastName);
+    }
+
+    public void setNewRecordEmail(String newRecordEmail){
+        registrationFormEmailInputField.sendKeys(newRecordEmail);
+    }
+
+    public void setNewRecordAge(int newRecordAge){
+        registrationFormAgeInputField.sendKeys(String.valueOf(newRecordAge));
+    }
+
+    public void setNewRecordSalary(int newRecordSalary){
+        registrationFormSalaryInputField.sendKeys(String.valueOf(newRecordSalary));
+    }
+
+    public void setNewRecordDepartment(String newRecordDepartment){
+        registrationFormDepartmentInputField.sendKeys(newRecordDepartment);
+    }
+
+    public void clickRegistrationFormSubmitButton(){
+        registrationFormSubmitButton.shouldBe(visible, Duration.ofSeconds(10)).click();
+    }
+
+    public void editWebTableRow(String newEmail, int newSalary){
+        registrationFormText.shouldHave(exactText("Registration Form")).shouldBe(visible, Duration.ofSeconds(10));
+        registrationFormEmailInputField.clear();
+        registrationFormEmailInputField.sendKeys(newEmail);
+        registrationFormSalaryInputField.clear();
+        registrationFormSalaryInputField.sendKeys(String.valueOf(newSalary));
+    }
+
+    public String getCurrentRecord(String firstNameOnRecord){
+        CURRENT_RECORD = webTableRows.filterBy(new Text(firstNameOnRecord)).get(0).text();
+        return CURRENT_RECORD;
+    }
+
+    public int getNumberOfRecordsInTable(){
+        NUMBER_OF_RECORDS = webTableRows.filterBy(new Text("@")).size();
+        return NUMBER_OF_RECORDS;
+    }
 }

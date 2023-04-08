@@ -1,9 +1,13 @@
+package elementspage.test;
+
+import dp.demoQADataProvider;
 import jdk.jfr.Description;
 import menus.demoqa.demoQASidebarMenu;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.demoqa.demoQAElementsPage;
 import pages.demoqa.demoQAHomePage;
+
 
 public class demoQAElementsPageTextBoxTest {
 
@@ -12,13 +16,14 @@ public class demoQAElementsPageTextBoxTest {
 
     demoQAElementsPage demoqaelementspage = new demoQAElementsPage();
 
+
     @Test()
     @Description("Open DEMOQA URL")
     public void openDemoQAURL(){
         demoqahomepage.openURL();
     }
 
-    @Test(dataProvider = "demoQADataProvider", dataProviderClass = demoQADataProvider.class)
+    @Test(dataProvider = "dp.demoQADataProvider", dataProviderClass = demoQADataProvider.class)
     @Description("Verify DEMOQA Links Available")
     public void testElementsPageLinks(int x, String page_links){
         demoqahomepage.getHomePageLinksText(x);
@@ -54,7 +59,7 @@ public class demoQAElementsPageTextBoxTest {
         Assert.assertEquals(demoqaelementspage.RETURNED_USER_PERMANENT_ADDRESS, pa);
     }
 
-    @Test(dataProvider = "demoqaElementsPageTextBoxInvalidEmails", dataProviderClass = demoQADataProvider.class)
+    @Test(dataProvider = "demoQAElementsPageTextBoxInvalidEmails", dataProviderClass = demoQADataProvider.class)
     @Description("Test Elements Page - Text Box Form Invalid Emails")
     public void testElementsPageTextBoxFormInvalidEmails(String iem){
         demoqaelementspage.setUserEmail(iem);

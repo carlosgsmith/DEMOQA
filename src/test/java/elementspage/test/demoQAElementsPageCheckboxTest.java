@@ -1,3 +1,6 @@
+package elementspage.test;
+
+import dp.demoQADataProvider;
 import jdk.jfr.Description;
 import menus.demoqa.demoQASidebarMenu;
 import org.testng.Assert;
@@ -19,7 +22,7 @@ public class demoQAElementsPageCheckboxTest {
         demoqahomepage.openURL();
     }
 
-    @Test(priority = 2, dataProvider = "demoQADataProvider", dataProviderClass = demoQADataProvider.class)
+    @Test(priority = 2, dataProvider = "dp.demoQADataProvider", dataProviderClass = demoQADataProvider.class)
     @Description("Verify DEMOQA Links Available")
     public void testElementsPageLinks(int x, String page_links){
         demoqahomepage.getHomePageLinksText(x);
