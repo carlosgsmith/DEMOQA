@@ -55,6 +55,7 @@
             <class name = "elementspage.test.demoQAElementsPageLinksTest">
                 <methods>
                     <include name="confirmAPIResults" />
+                    <include name="confirmTabOpens" />
                 </methods>
             </class>
         </classes>
