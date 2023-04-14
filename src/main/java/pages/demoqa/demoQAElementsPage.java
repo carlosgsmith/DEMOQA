@@ -4,6 +4,7 @@ import com.codeborne.selenide.*;
 import com.codeborne.selenide.conditions.Text;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
+import utils.demoqa.demoQABrowserLogsUtil;
 
 import java.time.Duration;
 
@@ -11,7 +12,7 @@ import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
 
 
-public class demoQAElementsPage {
+public class demoQAElementsPage extends demoQABrowserLogsUtil{
 
     public String RETURNED_USER_NAME;
     public String RETURNED_USER_EMAIL;
@@ -96,6 +97,26 @@ public class demoQAElementsPage {
     public SelenideElement registrationFormSalaryInputField = $("#salary");
     public SelenideElement registrationFormDepartmentInputField = $("#department");
     public SelenideElement registrationFormSubmitButton = $("#submit");
+
+    /* Button Page Element Definitions*/
+    public SelenideElement doubleClickButton = $("#doubleClickBtn");
+    public SelenideElement rightClickButton = $("#rightClickBtn");
+    public ElementsCollection dynamicClickButton = $$("#app > div.body-height > div.container.playgound-body > " +
+            "div.row > div.col-12.mt-4.col-md-6 > div > div.mt-4 > button");
+    public SelenideElement doubleClickButtonReturnedText = $("#doubleClickMessage");
+    public SelenideElement rightClickButtonReturnedText = $("#rightClickMessage");
+    public SelenideElement dynamicClickButtonReturnedText = $("#dynamicClickMessage");
+
+    /*Links Page Element Definitions*/
+    public SelenideElement homeLink = $("#simpleLink");
+    public SelenideElement home92xLaLink = $("#dynamicLink");
+    public SelenideElement createdLink = $("#created");
+    public SelenideElement noContentLink = $("#no-content");
+    public SelenideElement movedLink = $("#moved");
+    public SelenideElement badRequestLink = $("#bad-request");
+    public SelenideElement unauthorizedLink = $("#unauthorized");
+    public SelenideElement forbiddenLink = $("#forbidden");
+    public SelenideElement notFoundLink = $("#invalid-url");
 
 
     /*TextBox Methods*/
@@ -273,4 +294,36 @@ public class demoQAElementsPage {
         NUMBER_OF_RECORDS = webTableRows.filterBy(new Text("@")).size();
         return NUMBER_OF_RECORDS;
     }
+
+    /*Button Page Methods*/
+    public void doDoubleClick(){
+        doubleClickButton.shouldBe(visible, Duration.ofSeconds(10)).doubleClick();
+    }
+
+    public void doRightClick(){
+        rightClickButton.shouldBe(visible, Duration.ofSeconds(10)).contextClick();
+    }
+
+    public void doDynamicClick(){
+        dynamicClickButton.filterBy(exactText("Click Me")).get(0).click();
+    }
+
+    public void getDoubleClickReturnedMessage(){
+        doubleClickButtonReturnedText.shouldHave(exactText("You have done a double click"), Duration.ofSeconds(10));
+    }
+
+    public void getRightClickMessage(){
+        rightClickButtonReturnedText.shouldHave(exactText("You have done a right click"), Duration.ofSeconds(10));
+    }
+
+    public void getDynamicClickMessage(){
+        dynamicClickButtonReturnedText.shouldHave(exactText("You have done a dynamic click"), Duration.ofSeconds(10));
+    }
+
+    /*Links Page Methods*/
+    public void clickLinksPageHomeLink(){
+        homeLink.shouldBe(visible, Duration.ofSeconds(10)).click();
+    }
+
+
 }

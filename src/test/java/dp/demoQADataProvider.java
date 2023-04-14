@@ -77,5 +77,18 @@ public class demoQADataProvider {
         };
     }
 
+    @DataProvider(name = "demoQAElementsPageLinksApiCalls")
+    public Object[][] demoQAElementsPageLinksApiCalls(){
+        return new Object[][]{
+                {"https://demoqa.com/created", 201, "Created"},
+                {"https://demoqa.com/no-content", 204, "No Content"},
+                {"https://demoqa.com/moved", 301, "Moved Permanently"},
+                {"https://demoqa.com/bad-request", 400, "Bad Request"},
+                {"https://demoqa.com/unauthorized", 401, "Unauthorized"},
+                {"https://demoqa.com/forbidden", 403, "Forbidden"},
+                {"https://demoqa.com/invalid-url", 404, "Not Found"},
+        };
+    }
+
 }
 
