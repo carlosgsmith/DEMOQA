@@ -44,6 +44,19 @@
                     <include name="testElementsPageWebTableRecordsAdded" />
                 </methods>
             </class>
+            <class name = "elementspage.test.demoQAElementsPageButtonsTest">
+                <methods>
+                    <include name="openDemoQAURL" />
+                    <include name="testElementsPageLinks" />
+                    <include name="testElementsPageLinksOpen" />
+                    <include name="testElementsPageButtons" />
+                </methods>
+            </class>
+            <class name = "elementspage.test.demoQAElementsPageLinksTest">
+                <methods>
+                    <include name="confirmAPIResults" />
+                </methods>
+            </class>
         </classes>
     </test>
 </suite>
