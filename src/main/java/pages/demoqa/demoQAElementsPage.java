@@ -109,7 +109,7 @@ public class demoQAElementsPage extends demoQABrowserLogsUtil{
 
     /*Links Page Element Definitions*/
     public SelenideElement homeLink = $("#simpleLink");
-    public SelenideElement home92xLaLink = $("#dynamicLink");
+    public SelenideElement homeDynamicLink = $("#dynamicLink");
     public SelenideElement createdLink = $("#created");
     public SelenideElement noContentLink = $("#no-content");
     public SelenideElement movedLink = $("#moved");
@@ -325,5 +325,7 @@ public class demoQAElementsPage extends demoQABrowserLogsUtil{
         homeLink.shouldBe(visible, Duration.ofSeconds(10)).click();
     }
 
-
+    public void clickLinksPageDynamicLink(){
+        homeDynamicLink.shouldBe(visible, Duration.ofSeconds(10)).click();
+    }
 }
