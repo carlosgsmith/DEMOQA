@@ -58,6 +58,12 @@
                     <include name="confirmTabOpens" />
                 </methods>
             </class>
+            <class name = "elementspage.test.demoQAElementsPageBrokenLinksImagesTest">
+                <methods>
+                    <include name="confirmVaLidImageNotBroken" />
+                    <include name="confirmBrokenImageIsBroken" />
+                </methods>
+            </class>
         </classes>
     </test>
 </suite>
