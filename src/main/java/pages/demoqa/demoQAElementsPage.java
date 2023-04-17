@@ -3,13 +3,17 @@ package pages.demoqa;
 import com.codeborne.selenide.*;
 import com.codeborne.selenide.conditions.Text;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
 import utils.demoqa.demoQABrowserLogsUtil;
 
 import java.time.Duration;
 
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.WebDriverRunner.driver;
 
 
 public class demoQAElementsPage extends demoQABrowserLogsUtil{
@@ -20,6 +24,7 @@ public class demoQAElementsPage extends demoQABrowserLogsUtil{
     public String RETURNED_USER_PERMANENT_ADDRESS;
     public String CURRENT_RECORD;
     public int NUMBER_OF_RECORDS;
+    public Boolean IS_IMAGE_NOT_BROKEN;
 
     public SelenideElement userNameInputField = $("#userName");
     public SelenideElement userEmailInputField = $("#userEmail");
@@ -117,6 +122,12 @@ public class demoQAElementsPage extends demoQABrowserLogsUtil{
     public SelenideElement unauthorizedLink = $("#unauthorized");
     public SelenideElement forbiddenLink = $("#forbidden");
     public SelenideElement notFoundLink = $("#invalid-url");
+
+    /*Broken Links - Images Element Definitions*/
+
+    public SelenideElement validImageURL = $x("/html/body/div[2]/div/div/div[2]/div[2]/div[2]/img[1]");
+
+    public SelenideElement brokenImageURL = $x("/html/body/div[2]/div/div/div[2]/div[2]/div[2]/img[2]");
 
 
     /*TextBox Methods*/
@@ -327,5 +338,16 @@ public class demoQAElementsPage extends demoQABrowserLogsUtil{
 
     public void clickLinksPageDynamicLink(){
         homeDynamicLink.shouldBe(visible, Duration.ofSeconds(10)).click();
+    }
+
+
+    /*Broken Link Images Methods*/
+    public void checkImageDisplayed(WebElement img){
+        ChromeDriver driver = (ChromeDriver) driver().getWebDriver();
+        IS_IMAGE_NOT_BROKEN = (Boolean) ((JavascriptExecutor)driver).executeScript
+                ("return arguments[0].complete " +
+                        "&& typeof arguments[0].naturalWidth !=\"undefined\" "+
+                        "&& arguments[0].naturalWidth > 0", img);
+        driver.quit();
     }
 }
