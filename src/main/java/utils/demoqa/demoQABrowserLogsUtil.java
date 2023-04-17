@@ -8,6 +8,7 @@ import java.net.URL;
 import static com.codeborne.selenide.WebDriverRunner.driver;
 
 public class demoQABrowserLogsUtil {
+
     public int RESPONSE_STATUS_CODE;
     public String RESPONSE_STATUS_MESSAGE;
 

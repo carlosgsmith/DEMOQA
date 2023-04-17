@@ -27,7 +27,8 @@ public class demoQADataProvider {
                 {"larry holmes", "larryholmes@holmes.com", "123 Boulevard", "456 Boulevard"},
                 {"sam i am", "samiam@sam.com", "123 Street", "456 Street"},
                 {"john doe", "johndoe@john.com", "123 Road", "456 Road"},
-                {"larry holmes", "larryholmes@holmes.com", "123 Boulevard", "456 Boulevard"},                {"sam i am", "samiam@sam.com", "123 Street", "456 Street"},
+                {"larry holmes", "larryholmes@holmes.com", "123 Boulevard", "456 Boulevard"},
+                {"sam i am", "samiam@sam.com", "123 Street", "456 Street"},
                 {"john doe", "johndoe@john.com", "123 Road", "456 Road"},
                 {"larry holmes", "larryholmes@holmes.com", "123 Boulevard", "456 Boulevard"},
         };
